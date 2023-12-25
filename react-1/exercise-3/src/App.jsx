@@ -28,19 +28,30 @@ const RegistrationForm = () => {
 };
 
 const DisplayMember = () => {
-  const adam = {
-    name: 'Adam Smith',
-    email: 'a.smith@example.com',
-  };
-  const jane = {
-    name: 'Jane Baker',
-    email: 'j.baker@example.com'
-  };
+  const members = [
+    {
+      name: 'Adam Smith',
+      email: 'a.smith@example.com',
+    },
+    {
+      name: 'Jane Baker',
+      email: 'j.baker@example.com'
+    },
+  ];
+  const memberList = members.map( e => {
+    return (
+      <div key={e.name} className="member">
+        {e.name} ({e.email})
+      </div>
+    );
+  });
+      
   return (
     <div className="members">
       <h2>Registered Members</h2>
-      <div className="member">{adam.name} ({adam.email})</div>
-      <div className="member">{jane.name} ({jane.email})</div>
+      {memberList}
+      {/* <div className="member">{members[0].name} ({members[0].email})</div>
+      <div className="member">{members[1].name} ({members[1].email})</div> */}
     </div>
   );
 };
