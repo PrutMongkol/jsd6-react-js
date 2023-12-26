@@ -106,19 +106,9 @@ const TableDisplay = ({ data, vips }) => {
 };
 
 const TableBody = ({ data, vips }) => {
-  return (data.map(
-    e => {
-      return (
-        <tr key={e.name}>
-          <td>{e.name}</td>
-          <td>{e.age}</td>
-          <td>{e.weight}</td>
-          <td>{e.running}</td>
-          <td>{e.status}</td>
-        </tr>
-      )}
-  )).concat(
-    vips.map(
+  return (
+    <tbody>{
+      data.map(
       e => {
         return (
           <tr key={e.name}>
@@ -128,9 +118,23 @@ const TableBody = ({ data, vips }) => {
             <td>{e.running}</td>
             <td>{e.status}</td>
           </tr>
-      )}
-    )
-  );
-}
+        )}
+      ).concat(
+      vips.map(
+        e => {
+          return (
+            <tr key={e.name}>
+              <td>{e.name}</td>
+              <td>{e.age}</td>
+              <td>{e.weight}</td>
+              <td>{e.running}</td>
+              <td>{e.status}</td>
+            </tr>
+        )}
+      ))
+    }
+    </tbody>
+  )
+};
 
 export default App;
