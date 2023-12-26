@@ -109,20 +109,17 @@ const TableDisplay = ({ data }) => {
 
 const TableBody = ({ data }) => {
   return (
-    <tbody>{
-      data.map(
-      e => {
-        return (
-          <tr key={e.name}>
-            <td>{e.name}</td>
-            <td>{e.age}</td>
-            <td>{e.weight}</td>
-            <td>{e.running}</td>
-            <td>{e.status}</td>
-          </tr>
+    <tbody>
+      {data.map(e => {return (
+        <tr key={e.name}>
+          <td>{e.name}</td>
+          <td>{e.age}</td>
+          <td>{e.weight}</td>
+          <td>{e.running}</td>
+          <td>{e.status}</td>
+        </tr>
         )}
-      )
-    }
+      )}
     </tbody>
   )
 };
