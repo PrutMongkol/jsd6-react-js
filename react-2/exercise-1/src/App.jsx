@@ -24,12 +24,35 @@ function App() {
       status: "Good",
     },
   ];
+  const vips = [
+    {
+      name: "Jock M",
+      age: 99,
+      weight: 66,
+      running: 40,
+      status: "Balance",
+    },
+    {
+      name: "Mock Mean",
+      age: 55,
+      weight: 64,
+      running: 70,
+      status: "Extreme",
+    },
+    {
+      name: "Jock M",
+      age: 2,
+      weight: 8,
+      running: 12,
+      status: "Good",
+    },
+  ];
 
   return (
     <div id="app">
       <h1>Enter Data</h1>
       <RunningForm />
-      <TableDisplay data={members} />
+      <TableDisplay data={members} vips={vips} />
     </div>
   );
 }
@@ -62,7 +85,7 @@ const RunningForm = () => {
   );
 };
 
-const TableDisplay = () => {
+const TableDisplay = ({ data, vips }) => {
   return (
     <>
       <h1>Entered Data</h1>
@@ -76,16 +99,38 @@ const TableDisplay = () => {
             <th>Good Running</th>
           </tr>
         </thead>
-        <TableBody />
+        <TableBody data={data} vips={vips} />
       </table>
     </>
   );
 };
 
-const TableBody = () => {
-  return (
-    // code here
-  )
+const TableBody = ({ data, vips }) => {
+  return (data.map(
+    e => {
+      return (
+        <tr key={e.name}>
+          <td>{e.name}</td>
+          <td>{e.age}</td>
+          <td>{e.weight}</td>
+          <td>{e.running}</td>
+          <td>{e.status}</td>
+        </tr>
+      )}
+  )).concat(
+    vips.map(
+      e => {
+        return (
+          <tr key={e.name}>
+            <td>{e.name}</td>
+            <td>{e.age}</td>
+            <td>{e.weight}</td>
+            <td>{e.running}</td>
+            <td>{e.status}</td>
+          </tr>
+      )}
+    )
+  );
 }
 
 export default App;
