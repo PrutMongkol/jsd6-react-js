@@ -1,36 +1,35 @@
 import "./App.css";
 
-function App() {
+const App = (props) => {
   return (
-    <div id="app">
-      <h1>Enter Data</h1>
+    <>
       <PostContainer />
       <FeedSection />
-    </div>
+    </>
   );
-}
+};
 
-const PostContainer = () => {
+const PostContainer = (props) => {
   return (
-    <div class="post-container">
-      <div class="post-header">
-        <img class="post-avatar" src="avatar.jpg" alt="Your Avatar" />
-        <div class="post-author">You</div>
+    <div className="post-container">
+      <div className="post-header">
+        <img className="post-avatar" src="avatar.jpg" alt="Your Avatar" />
+        <div className="post-author">You</div>
       </div>
-      <div class="post-content">
+      <div className="post-content">
         <textarea
-          class="post-input"
+          className="post-input"
           placeholder="What's on your mind?"
         ></textarea>
       </div>
-      <div class="post-actions">
-        <button class="post-button">Post</button>
+      <div className="post-actions">
+        <button className="post-button">Post</button>
       </div>
     </div>
   );
 };
 
-const FeedSection = () => {
+const FeedSection = (props) => {
   return (
     <div class="feed">
       <div class="post">
@@ -51,6 +50,7 @@ const FeedSection = () => {
           src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
           alt="Post 1"
         />
+        <button>DELETE</button>
       </div>
 
       <div class="post">
@@ -71,6 +71,7 @@ const FeedSection = () => {
           src="https://images.rawpixel.com/image_png_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcm00NTYtMDA3YS5wbmc.png"
           alt="Post 2"
         />
+        <button>DELETE</button>
       </div>
 
       <div class="post">
@@ -91,9 +92,48 @@ const FeedSection = () => {
           src="https://images.rawpixel.com/image_png_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcm00NTYtMDA3YS5wbmc.png"
           alt="Post 3"
         />
+        <button>DELETE</button>
       </div>
     </div>
   );
 };
+
+
+// const PostHeader = (props) => {
+//   return (
+//     <>
+//       <img className="post-avatar" src={props.src} alt={props.alt} />
+//       <div className="post-author">{props.author}</div>
+//       (
+//         props.postTime || (<div className='post-time'>{props.postTime}</div>)
+//       )
+//     </>
+//   );
+// };
+
+// const PostContent = (props) => {
+//   return (
+//     <textarea
+//       class="post-input"
+//       placeholder="What's on your mind?"
+//     >
+//       {props.content}
+//     </textarea>
+//   );
+// };
+
+// const PostActions = (props) => {
+//   return <button class="post-button">{props.action}</button>;
+// }
+
+
+// const Post = (props) => {
+//   return (
+//     <>
+//       <PostHeader />
+//       <PostContent />
+//     </>
+//   );
+// };
 
 export default App;
