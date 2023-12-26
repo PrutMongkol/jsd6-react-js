@@ -48,11 +48,13 @@ function App() {
     },
   ];
 
+  const mergedData = [...members, ...vips]
+
   return (
     <div id="app">
       <h1>Enter Data</h1>
       <RunningForm />
-      <TableDisplay data={members} vips={vips} />
+      <TableDisplay data={mergedData} />
     </div>
   );
 }
@@ -85,7 +87,7 @@ const RunningForm = () => {
   );
 };
 
-const TableDisplay = ({ data, vips }) => {
+const TableDisplay = ({ data }) => {
   return (
     <>
       <h1>Entered Data</h1>
@@ -99,13 +101,13 @@ const TableDisplay = ({ data, vips }) => {
             <th>Good Running</th>
           </tr>
         </thead>
-        <TableBody data={data} vips={vips} />
+        <TableBody data={data} />
       </table>
     </>
   );
 };
 
-const TableBody = ({ data, vips }) => {
+const TableBody = ({ data }) => {
   return (
     <tbody>{
       data.map(
@@ -119,19 +121,7 @@ const TableBody = ({ data, vips }) => {
             <td>{e.status}</td>
           </tr>
         )}
-      ).concat(
-      vips.map(
-        e => {
-          return (
-            <tr key={e.name}>
-              <td>{e.name}</td>
-              <td>{e.age}</td>
-              <td>{e.weight}</td>
-              <td>{e.running}</td>
-              <td>{e.status}</td>
-            </tr>
-        )}
-      ))
+      )
     }
     </tbody>
   )
