@@ -1,58 +1,57 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const temperature = 12;
+  const [temperature, setTemperature] = useState(12);
+
   return (
     <div id="app">
-      <Header temp={temperature} />
-      <Content tempContent={temperature} />
-      <Footer />
+      <Header temperature={temperature} />
+      <Content temperature={temperature} />
+      <Footer setTemperature={setTemperature} />
     </div>
   );
 }
 
-function Header(props) {
-  const tempInHeader = props.temp;
+function Header({ temperature }) {
   return (
     // Code for Header
     // <Header />
     <header>
       <span>Turn on / off</span>
-      <p>Current Temperature: {tempInHeader}</p>
+      <p>Current Temperature: {temperature}</p>
     </header>
   );
 }
 
-function Content(props) {
-  const tempInContent = props.tempContent;
+function Content({ temperature }) {
   return (
     // Code for Content
     // <Content />
     <div>
-      <Temperature tempTemperature={tempInContent} />
+      <Temperature temperature={temperature} />
     </div>
   );
 }
 
-function Temperature(props) {
-  const tempInTemperature = props.tempTemperature;
+function Temperature({ temperature }) {
   return (
     // Code for Temperature
     // <Temperature />
     <div id="temperature">
-      <span>{tempInTemperature} Oc</span>
+      <span>{temperature} ºC</span>
     </div>
   );
 }
 
-function Footer() {
+function Footer({ setTemperature }) {
   return (
     // Code for Footer
     // <Footer />
     <footer>
-      <button>Up</button>
-      <button>Down</button>
+      <button onClick={() => setTemperature(prev => prev + 1)}>Up</button>
+      <button onClick={() => setTemperature(prev => prev - 1)}>Down</button>
     </footer>
   );
 }
