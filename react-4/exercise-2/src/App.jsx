@@ -19,16 +19,14 @@ const peopleData = [
 ];
 
 function App() {
-  const [people, setPeople] = useState(peopleData);
+  const [people, setPeople] = useState([]);
   const [name, setName] = useState();
   const [organization, setOrganization] = useState();
   const [position, setPosition] = useState();
 
-  const repopulatePeople = () => {
+  useEffect(() => {
     setPeople(peopleData);
-  };
-
-  useEffect(repopulatePeople, []);
+  }, []);
 
   const handleName = ({ target }) => {
     setName(target.value);
@@ -78,9 +76,9 @@ function App() {
         </thead>
         <tbody>
           {
-            people.map((element) => {
+            people.map((element, index) => {
               return (
-                <tr>
+                <tr key={`id-${index}`}>
                   <td>{element.name}</td>
                   <td>{element.organization}</td>
                   <td>{element.position}</td>
