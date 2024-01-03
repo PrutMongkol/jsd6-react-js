@@ -117,7 +117,7 @@ const PostContainer = ({ create, update, postsId }) => {
           <button 
             className="post-button" 
             onClick={ action === 'create' ? createPostInPostContainer : updatePostInPostContatainer }>
-            Post
+            { action === 'create' ? 'Post' : 'Edit'}
           </button>
         </div>
       </div>    

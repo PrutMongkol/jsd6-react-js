@@ -13,6 +13,7 @@ const App = () => {
       const response = await axios.get(
         "https://jsd5-mock-backend.onrender.com/members"
       );
+      console.log(response);
       // set member here
       if (response.status === 200 && response.data) {
         setMembers([...response.data]);
@@ -52,7 +53,10 @@ const App = () => {
       <h1>Single Data by ID</h1>
       <div>
         <select onChange={(ev) => getDataById(ev.target.value)}>
-          <option value="cc9754c4-f619-4921-bf7e-8a4fc9714e7f">
+          {members.map((member) => (
+            <option value={`${member.id}`}>{member.name}</option>
+          ))}
+          {/* <option value="cc9754c4-f619-4921-bf7e-8a4fc9714e7f">
             Mock Name
           </option>
           <option value="66a3f853-5c09-4412-a380-3cc1ebf08c9c">John Doe</option>
@@ -64,7 +68,7 @@ const App = () => {
           </option>
           <option value="6b72fbe1-5c72-42bb-a25f-8d00cef7e88a">
             Bob Brown
-          </option>
+          </option> */}
         </select>
         <Card
           id={singleMember.id}

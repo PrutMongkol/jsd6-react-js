@@ -45,7 +45,7 @@ const PostContainer = ({ createPost }) => {
   const [content, setContent] = useState();
   const [image, setImage] = useState();
 
-  const createPostInContainer = () => {
+  const createPostInPostContainer = () => {
     createPost(content, image);
   }
 
@@ -71,7 +71,7 @@ const PostContainer = ({ createPost }) => {
       <div className="post-actions">
         <button 
           className="post-button"
-          onClick={createPostInContainer}
+          onClick={createPostInPostContainer}
         >Post</button>
       </div>
     </div>
