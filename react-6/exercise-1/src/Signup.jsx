@@ -1,15 +1,14 @@
-import { useState } from 'react'
 import Layout from './Layout'
 
-const App = () => {
+const Signup = () => {
     
     return (
         <Layout>
             <div>
-                Application
+                Signup
             </div>
         </Layout>
     )
 }
 
-export default App;
+export default Signup;
