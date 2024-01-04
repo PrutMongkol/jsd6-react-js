@@ -3,9 +3,8 @@ import { useState } from "react";
 const Form = ({ submitHandler }) => {
   const [id, setId] = useState();
   const [name, setName] = useState();
-  const [age, setAge] = useState();
-  const [weight, setWeight] = useState();
-  const [status, setStatus] = useState();
+  const [lastname, setLastname] = useState();
+  const [position, setPosition] = useState();
 
   return (
     <div>
@@ -23,27 +22,49 @@ const Form = ({ submitHandler }) => {
       />
       <input
         type="number"
-        placeholder="age"
-        value={age}
-        onChange={(ev) => setAge(ev.target.value)}
+        placeholder="lastname"
+        value={lastname}
+        onChange={(ev) => setLastname(ev.target.value)}
       />
       <input
         type="text"
-        placeholder="weight"
-        value={weight}
-        onChange={(ev) => setWeight(ev.target.value)}
+        placeholder="position"
+        value={position}
+        onChange={(ev) => setPosition(ev.target.value)}
       />
-      <input
-        type="text"
-        placeholder="status"
-        value={status}
-        onChange={(ev) => setStatus(ev.target.value)}
-      />
-      <button onClick={() => submitHandler(id, name, age, weight, status)}>
+      <button onClick={() => submitHandler(id, name, lastname, position)}>
         Submit
       </button>
     </div>
   );
 };
 
-export default Form;
+const DeleteForm = ({ submitHandler, data }) => {
+  const [id, setId] = useState();
+
+  console.log('data in DeleteForm:', data);
+  return (
+    <div>
+      <select
+        name="id"
+        id="id"
+        value={id}
+        onChange={(ev) => setId(ev.target.value)}
+      >
+        <option value="">--Item to delete--</option>
+        {data.map((element) => (
+          <option value={element.id}>{element.name}</option>
+        ))}
+      </select>
+      <input
+        type="text"
+        placeholder="unique identifier"
+        value={id}
+        onChange={(ev) => setId(ev.target.value)}
+      />
+      <button onClick={() => submitHandler(id)}>Delete</button>
+    </div>
+  );
+};
+
+export { Form, DeleteForm };

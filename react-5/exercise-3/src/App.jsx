@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
 import "./App.css";
-import Form from "./Form";
+import { Form, DeleteForm} from "./Form";
 
 const App = () => {
   const [members, setMembers] = useState([]);
@@ -19,19 +19,25 @@ const App = () => {
     getData();
   }, [reload]);
 
-  const removeData = () => {};
+  const removeData = async (id) => {
+    const response = await axios.delete(`https://jsd5-mock-backend.onrender.com/member/${id}`);
+    console.log(response);
+
+    if (response.status === 200) {
+      setReload(!reload);
+    }
+  };
 
   return (
     <div className="container">
-      <Form submitHandler={removeData} />
+      <DeleteForm submitHandler={removeData} data={members} />
       <div className="card-container">
         {members.map((member) => (
           <Card
-            age={member.age}
-            name={member.name}
             id={member.id}
-            status={member.status}
-            weight={member.weight}
+            name={member.name}
+            lastname={member.lastname}
+            position={member.position}
           />
         ))}
       </div>
