@@ -7,6 +7,12 @@ class App extends React.Component {
     this.state = {
       color: "",
     };
+
+    this.setColor = this.setColor.bind(this);
+  }
+
+  setColor(color) {
+    this.setState({ color: color });
   }
 
   render() {
@@ -51,33 +57,9 @@ class App extends React.Component {
           </div>
         )}
 
-        <button
-          onClick={() =>
-            this.setState({
-              color: "yellow",
-            })
-          }
-        >
-          Show Yellow
-        </button>
-        <button
-          onClick={() =>
-            this.setState({
-              color: "blue",
-            })
-          }
-        >
-          Show Blue
-        </button>
-        <button
-          onClick={() =>
-            this.setState({
-              color: "pink",
-            })
-          }
-        >
-          Show Pink
-        </button>
+        <button onClick={() => this.setColor("yellow")}>Show Yellow</button>
+        <button onClick={() => this.setColor("blue")}>Show Blue</button>
+        <button onClick={() => this.setColor("pink")}>Show Pink</button>
       </>
     );
   }
